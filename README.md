@@ -75,6 +75,7 @@ resources/views/
       create.blade.php           # Modal for creating a project
       edit.blade.php             # Modal for editing a project
       delete.blade.php           # Modal for deleting a project
+      show.blade.php             # Modal for showing tasks for a project
 
 app/Http/Controllers/
   TaskController.php             # Task CRUD, drag-and-drop reorder
