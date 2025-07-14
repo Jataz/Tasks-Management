@@ -8,6 +8,7 @@ A simple, modern Laravel web application for managing tasks and projects. Featur
 - Filter tasks by project
 - Manage projects (add, edit, delete)
 - All forms use Bootstrap modals
+- Modern UI with DataTables for search, pagination, and sorting
 
 ## Features
 
@@ -15,6 +16,7 @@ A simple, modern Laravel web application for managing tasks and projects. Featur
 - **Project Management:** Add, edit, and delete projects. Tasks are grouped by project.
 - **Drag-and-Drop:** Reorder tasks in the browser; priorities update automatically.
 - **AJAX & Modals:** All operations are performed via AJAX and Bootstrap modals for a smooth user experience.
+- **DataTables:** Instant search, pagination, and sorting for both tasks and projects.
 
 ## Setup Instructions
 
@@ -27,7 +29,7 @@ A simple, modern Laravel web application for managing tasks and projects. Featur
 ### Installation
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/Jataz/Tasks-Management.git
    cd task
    ```
 2. **Install dependencies:**
@@ -47,34 +49,41 @@ A simple, modern Laravel web application for managing tasks and projects. Featur
    ```sh
    php artisan migrate
    ```
-6. **(Optional) Compile assets:**
-   ```sh
-   npm install && npm run build
-   ```
-7. **Start the development server:**
+
+6. **Start the development server:**
    ```sh
    php artisan serve
    ```
-8. **Visit the app:**
+7. **Visit the app:**
    Open [http://localhost:8000/tasks](http://localhost:8000/tasks) in your browser.
 
-## Usage
-- Use the "Add Task" button to create a new task (modal form).
-- Drag and drop tasks to reorder them; priorities update automatically.
-- Use the project dropdown to filter tasks by project.
-- Manage projects using the project modal.
-
 ## File Structure
-- `app/Models/Task.php` — Task model
-- `app/Models/Project.php` — Project model
-- `app/Http/Controllers/TaskController.php` — Task controller (CRUD, reorder)
-- `app/Http/Controllers/ProjectController.php` — Project controller (CRUD)
-- `resources/views/tasks.blade.php` — Main UI (modals, drag-and-drop)
-- `resources/views/layouts/app.blade.php` — Layout
-- `routes/web.php` — Web routes
 
-## Customization
-- You can further customize the UI or add authentication as needed.
+```
+resources/views/
+  layouts/
+    app.blade.php                # Main layout with navbar
+  tasks/
+    index.blade.php              # Task list/table with DataTables and drag-and-drop
+    modals/
+      create.blade.php           # Modal for creating a task
+      edit.blade.php             # Modal for editing a task
+      delete.blade.php           # Modal for deleting a task
+  projects/
+    index.blade.php              # Project list/table with DataTables
+    modals/
+      create.blade.php           # Modal for creating a project
+      edit.blade.php             # Modal for editing a project
+      delete.blade.php           # Modal for deleting a project
 
-## License
-MIT
+app/Http/Controllers/
+  TaskController.php             # Task CRUD, drag-and-drop reorder
+  ProjectController.php          # Project CRUD
+
+routes/
+  web.php                        # Web routes (resourceful, drag-and-drop)
+
+public/
+  (No custom assets needed; uses CDN for Bootstrap, DataTables, jQuery, SortableJS)
+```
+
