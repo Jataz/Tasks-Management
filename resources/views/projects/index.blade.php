@@ -22,13 +22,18 @@
             <td>
                 <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#editProjectModal-{{ $project->id }}">Edit</button>
                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProjectModal-{{ $project->id }}">Delete</button>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showProjectModal-{{ $project->id }}">View Tasks</button>
             </td>
         </tr>
         @include('projects.modals.edit', ['project' => $project])
         @include('projects.modals.delete', ['project' => $project])
+        
         @endforeach
     </tbody>
 </table>
+@foreach($projects as $project)
+  @include('projects.modals.show', ['project' => $project])
+@endforeach
 @include('projects.modals.create')
 @endsection
 @push('scripts')
